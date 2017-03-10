@@ -9,8 +9,8 @@ public class InsertionSort extends SortManager
 				int pivot = array[i]; 
 				int tmp = i - 1;
 
-				while (tmp >= 0 && pivot < array[tmp]) {
-					array[tmp] = array[tmp]; 
+				while (tmp >= 0 && pivot > array[tmp]) {
+					array[tmp + 1] = array[tmp]; 
 					tmp--;
 				}
 				array[tmp + 1] = pivot;

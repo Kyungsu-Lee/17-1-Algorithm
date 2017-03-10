@@ -5,12 +5,18 @@ import sort.time.*;
 public abstract class SortManager
 {
 	protected int[] array;
+	private int[] sorted_array;
 
 	protected abstract void sort(int[] array);
 
 	private void sort()
 	{
-		this.sort(this.array);
+		int[] tmp = new int[this.array.length];
+		for(int i = 0; i<this.array.length; i++)
+			tmp[i] = this.array[i];
+
+		this.sort(tmp);
+		sorted_array = tmp;
 	}
 
 	public void setArrayForSort(int[] array)
@@ -29,7 +35,23 @@ public abstract class SortManager
 		String str = "Array : ";
 
 		for(int i=0; i<array.length; i++)
-			str += str + array[i] + " ";
+			str += array[i] + " ";
+
+		System.out.println(str);
+	}
+
+	public void printSortedArray()
+	{
+		if(sorted_array == null)
+		{
+			System.out.println("array is not set");
+			return;
+		}
+
+		String str = "Array : ";
+
+		for(int i=0; i<sorted_array.length; i++)
+			str += sorted_array[i] + " ";
 
 		System.out.println(str);
 	}
@@ -41,7 +63,6 @@ public abstract class SortManager
 		tM.start();
 		this.sort();
 		tM.end();
-
 		return tM.getRunTime();
 	}
 
@@ -51,7 +72,12 @@ public abstract class SortManager
 		double time = 0;
 
 		for(int i=0; i<count; i++)
-			time += getSortTime();
+		{
+			double tmp = getSortTime();
+			time += tmp;
+
+			//System.out.println(i + "th sort time : " + tmp);
+		}
 
 		return (time/count);
 	}
