@@ -3,18 +3,18 @@ package sort.sort;
 public class InsertionSort extends SortManager
 {
 	@Override
-		protected void sort(int[] array)
-		{
-			for (int i = 1; i < array.length; i++) {
-				int pivot = array[i]; 
-				int tmp = i - 1;
+	protected void sort(int[] arr)
+	{
+		for (int i = 1; i < arr.length; i++) {
+			int standard = arr[i];
+			int aux = i - 1;   
 
-				while (tmp >= 0 && pivot > array[tmp]) {
-					array[tmp + 1] = array[tmp]; 
-					tmp--;
-				}
-				array[tmp + 1] = pivot;
+			while (aux >= 0 && standard < arr[aux]) {
+				arr[aux + 1] = arr[aux];   
+				aux--;
 			}
+			arr[aux + 1] = standard;  
 		}
-
+	}
 }
+
