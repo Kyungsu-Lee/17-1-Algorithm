@@ -31,9 +31,9 @@ class main
 
 			result += "1~"+length;
 			result += "\t\t" + insertionSort.getAverageSortTime(100);
-			result += "  " + mergeSort.getAverageSortTime(100);
-			result += "  " + selectionSort.getAverageSortTime(100);
-			result += "  " + javaSort.getAverageSortTime(100);
+			result += "\t\t" + mergeSort.getAverageSortTime(100);
+			result += "\t\t" + selectionSort.getAverageSortTime(100);
+			result += "\t\t" + javaSort.getAverageSortTime(100);
 			result += "\n\n";
 	
 			System.out.println(result);
@@ -56,9 +56,9 @@ class main
 
 			result += "1~"+length;
 			result += "\t\t" + insertionSort.getAverageSortTime(100);
-			result += "  " + mergeSort.getAverageSortTime(100);
-			result += "  " + selectionSort.getAverageSortTime(100);
-			result += "  " + javaSort.getAverageSortTime(100);
+			result += "\t\t" + mergeSort.getAverageSortTime(100);
+			result += "\t\t" + selectionSort.getAverageSortTime(100);
+			result += "\t\t" + javaSort.getAverageSortTime(100);
 			result += "\n\n";
 	
 			System.out.println(result);
@@ -85,9 +85,9 @@ class main
 
 			result += "1~"+length;
 			result += "\t\t" + insertionSort.getAverageSortTime(100);
-			result += "  " + mergeSort.getAverageSortTime(100);
-			result += "  " + selectionSort.getAverageSortTime(100);
-			result += "  " + javaSort.getAverageSortTime(100);
+			result += "\t\t" + mergeSort.getAverageSortTime(100);
+			result += "\t\t" + selectionSort.getAverageSortTime(100);
+			result += "\t\t" + javaSort.getAverageSortTime(100);
 			result += "\n\n";
 	
 			System.out.println(result);
