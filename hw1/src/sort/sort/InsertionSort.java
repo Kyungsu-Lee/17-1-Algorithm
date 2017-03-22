@@ -3,17 +3,17 @@ package sort.sort;
 public class InsertionSort extends SortManager
 {
 	@Override
-	protected void sort(int[] arr)
+	protected void sort(int[] array)
 	{
-		for (int i = 1; i < arr.length; i++) {
-			int standard = arr[i];
+		for (int i = 1; i < array.length; i++) {
+			int standard = array[i];
 			int aux = i - 1;   
 
-			while (aux >= 0 && standard < arr[aux]) {
-				arr[aux + 1] = arr[aux];   
+			while (aux >= 0 && standard < array[aux]) {
+				array[aux + 1] = array[aux];   
 				aux--;
 			}
-			arr[aux + 1] = standard;  
+			array[aux + 1] = standard;  
 		}
 	}
 }

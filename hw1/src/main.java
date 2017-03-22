@@ -4,81 +4,104 @@ import java.util.*;
 
 class main
 {
+	public static final int TESTNUM = 5100;
+
 	public static void main(String[] args)
 	{
-		for(int length = 10; length <= 10000; length += 500)
+		SortManager insertionSort 	= new InsertionSort();
+		SortManager mergeSort 		= new MergeSort();
+		SortManager selectionSort 	= new SelectionSort();
+		SortManager javaSort		= new CollectionSort();
+		//for best case (already sorted)
+		String result = "";
+
+		System.out.println("FOR BEST CASE");
+		result += "\t\tinsertion sort  merge sort  selection sort  java sort\n\n";
+		for(int length = 100; length <= TESTNUM; length += 50)
 		{
-			System.out.println("\n========= array length : " + length + " ===========");
+			int[] arr = new int[length];
+
+			for(int i=0; i<length; i++)
+				arr[i] = i;
+		
+			insertionSort.setArrayForSort(arr);
+			mergeSort.setArrayForSort(arr);
+			selectionSort.setArrayForSort(arr);
+			javaSort.setArrayForSort(arr);
+
+			result += "1~"+length;
+			result += "\t\t" + insertionSort.getAverageSortTime(100);
+			result += "  " + mergeSort.getAverageSortTime(100);
+			result += "  " + selectionSort.getAverageSortTime(100);
+			result += "  " + javaSort.getAverageSortTime(100);
+			result += "\n\n";
+	
+			System.out.println(result);
+			result = "";
+		}
+
+		System.out.println("FOR WORST CASE");
+		result += "\t\tinsertion sort  merge sort  selection sort  java sort\n\n";
+		for(int length = 100; length <= TESTNUM; length += 50)
+		{
+			int[] arr = new int[length];
+
+			for(int i=0; i<length; i++)
+				arr[i] = length - i;
+		
+			insertionSort.setArrayForSort(arr);
+			mergeSort.setArrayForSort(arr);
+			selectionSort.setArrayForSort(arr);
+			javaSort.setArrayForSort(arr);
+
+			result += "1~"+length;
+			result += "\t\t" + insertionSort.getAverageSortTime(100);
+			result += "  " + mergeSort.getAverageSortTime(100);
+			result += "  " + selectionSort.getAverageSortTime(100);
+			result += "  " + javaSort.getAverageSortTime(100);
+			result += "\n\n";
+	
+			System.out.println(result);
+			result = "";
+		}
+
+		ArrayList<int[]> array = new ArrayList<int[]>();
+		System.out.println("FOR RANDOM CASE");
+		result += "\t\tinsertion sort  merge sort  selection sort  java sort\n\n";
+		for(int length = 100; length <= TESTNUM; length += 50)
+		{
+			int[] arr = new int[length];
+
 			Random rd = new Random();
-			int[] arr = new int[length];	//tmp
-			int[] arr_sorted= new int[arr.length];
-			int[] arr_reversed= new int[arr.length];
-			int[] arr_random= new int[arr.length];
 
-			for(int i=0; i<arr.length; i++)
-				arr_sorted[i] = i;			//best case
+			for(int i=0; i<length; i++)
+				arr[i] = Math.abs(rd.nextInt());
+			array.add(arr);		
 
-			for(int i=0; i<arr.length; i++)
-				arr_reversed[i] = arr.length - i;	//worst caes		
+			insertionSort.setArrayForSort(arr);
+			mergeSort.setArrayForSort(arr);
+			selectionSort.setArrayForSort(arr);
+			javaSort.setArrayForSort(arr);
 
-			for(int i=0; i<arr.length; i++)
-				arr_random[i] = rd.nextInt();		// randomly sort
+			result += "1~"+length;
+			result += "\t\t" + insertionSort.getAverageSortTime(100);
+			result += "  " + mergeSort.getAverageSortTime(100);
+			result += "  " + selectionSort.getAverageSortTime(100);
+			result += "  " + javaSort.getAverageSortTime(100);
+			result += "\n\n";
+	
+			System.out.println(result);
+			result = "";
+		}
 
-
-			System.out.println("\n*sorted case* ");
+		System.out.println("\n\nRamdom Array");
+		for(int[] arr : array)
+		{
+			for(int i=0; i < arr.length; i++)
 			{
-				SortManager sM = new InsertionSort();
-				sM.setArrayForSort(arr_sorted);
-				System.out.println("Insertion sort \t: " + sM.getAverageSortTime(1000));
-
-				SortManager sM2 = new MergeSort();
-				sM2.setArrayForSort(arr_sorted);
-				System.out.println("Merge sort \t: " + sM2.getAverageSortTime(1000));
-
-				SortManager sM3 = new CollectionSort();
-				sM3.setArrayForSort(arr_sorted);
-				System.out.println("Array sort \t: " + sM3.getAverageSortTime(1000));
+				System.out.print(arr[i] + " " );
 			}
-
-			System.out.println("\n*reversed case*");
-			{
-				SortManager sM = new InsertionSort();
-				sM.setArrayForSort(arr_reversed);
-				System.out.println("Insertion sort \t: " + sM.getAverageSortTime(1000));
-
-				SortManager sM2 = new MergeSort();
-				sM2.setArrayForSort(arr_reversed);
-				System.out.println("Merge sort \t: " + sM2.getAverageSortTime(1000));
-
-				SortManager sM3 = new CollectionSort();
-				sM3.setArrayForSort(arr_reversed);
-				System.out.println("Array Sort \t: " + sM3.getAverageSortTime(1000));
-			}
-
-			System.out.println("\n*random case*");
-			
-				SortManager sM = new InsertionSort();
-				sM.setArrayForSort(arr_random);
-				System.out.println("Insertion sort \t: " + sM.getAverageSortTime(1000));
-
-				SortManager sM2 = new MergeSort();
-				sM2.setArrayForSort(arr_random);
-				System.out.println("Merge sort \t: " + sM2.getAverageSortTime(1000));
-
-				SortManager sM3 = new CollectionSort();
-				sM3.setArrayForSort(arr_random);
-				System.out.println("Array Sort \t: " + sM3.getAverageSortTime(1000));
-			
-
-
-			System.out.println("\n============= randomly generated array =============");
-			for(int n : arr_random)
-				System.out.print(n + " ");
-			System.out.println("\n=================================================");
-			
-			System.out.println("\n============= after sort =============");
-			sM3.printSortedArray();
-			System.out.println("=================================================");
+			System.out.println("");
 		}
 	}
 }

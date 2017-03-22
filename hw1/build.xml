@@ -16,6 +16,19 @@
 	<javac srcdir="${src}" destdir="${bin}"/>
 </target>
 
+ <target name="jar" depends="build">
+        <mkdir dir="./bin/jar"/>
+        <jar destfile="./bin/jar/Sort.jar" basedir="bin/">
+            <manifest>
+                <attribute name="Main-Class" value="main"/>
+            </manifest>
+        </jar>
+    </target>
+
+<target name="run" depends="jar">
+	<java jar="./bin/jar/Sort.jar" fork="true"/>
+</target>
+
 <target name="clean">
 	<delete dir="${bin}"/>
 </target>
