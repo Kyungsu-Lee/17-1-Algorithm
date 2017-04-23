@@ -19,6 +19,11 @@ public class main
 				heap.insertItem(arr[i]);
 
 
+			System.out.print("insert into heap : ");
+			for(int item : heap.toArray())
+				System.out.print(item + " ");
+			System.out.println("");
+
 			heap.sort();
 
 
