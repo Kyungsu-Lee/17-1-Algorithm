@@ -97,7 +97,12 @@ public class Heap extends HeapIterator
 	}
 
 	private void sort(int idx)
-	{
+	{	System.out.print("sorting : ");
+		for(int item : toArray())
+			System.out.print(item + " ");
+		System.out.println("");
+			
+
 		if(idx == 1)
 			return;
 
