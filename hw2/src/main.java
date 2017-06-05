@@ -17,9 +17,10 @@ public class main
 
 			for(int i=0; i<arr.length; i++)
 				heap.insertItem(arr[i]);
+			System.out.println("=================");
 
 
-			System.out.print("insert into heap : ");
+			System.out.print("before sort : ");
 			for(int item : heap.toArray())
 				System.out.print(item + " ");
 			System.out.println("");

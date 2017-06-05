@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="euc-kr"?>
+
+<project default="run" basedir=".">
+
+<property name="src" value="src"/>
+<property name="bin" value="bin"/>
+<property name="lib" value="lib"/>
+<property name="jar" value="jar"/>
+
+<target name="init">
+	<delete dir="${bin}"/>
+	<delete dir="${jar}"/>
+	<mkdir dir="${bin}"/>
+</target>
+
+<target name="build" depends="init">
+	<javac srcdir="${src}" destdir="${bin}"/>
+</target>
+
+ <target name="jar" depends="build">
+        <mkdir dir="./jar"/>
+        <jar destfile="./jar/scc.jar" basedir="bin/">
+            <manifest>
+                <attribute name="Main-Class" value="scc.Main"/>
+            </manifest>
+        </jar>
+    </target>
+
+<target name="run" depends="jar">
+	<java jar="./jar/scc.jar" fork="true"/>
+</target>
+
+<target name="clean">
+	<delete dir="${bin}"/>
+	<delete dir="${jar}"/>
+</target>
+
+</project>

@@ -30,8 +30,19 @@ public class Heap extends HeapIterator
 		if(isEmpty())
 			addLength();			
 
+		System.out.print("before insert : ");
+		for(int i=0; i<currentIdx; i++)
+			System.out.print(items[i] + " ");
+		System.out.println("");
+
 		this.items[currentIdx++] = item;
+
 		makeTree(currentIdx-1);
+
+		System.out.print("after insert : ");
+		for(int i=0; i<currentIdx; i++)
+			System.out.print(items[i] + " ");
+		System.out.println("\n");
 	}
 
 	private void swap(int idx1, int idx2)
